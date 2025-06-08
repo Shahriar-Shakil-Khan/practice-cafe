@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaBookmark } from "react-icons/fa";
 
-const Blog = ({blog}) => {
-   
+const Blog = ({blog,handleBookMark}) => {
+    console.log(handleBookMark)
     return (
         <div className='m-2'>
             
@@ -19,7 +19,8 @@ const Blog = ({blog}) => {
                     <div className="author flex justify-around items-center">
                         <h3>{blog.author}</h3>
                         <img className='w-16' src={blog.author_img} alt="" />
-                        <FaBookmark  size={25}/>
+                        <button onClick={()=>handleBookMark(blog)}><FaBookmark size={25}/></button>
+                        
                     </div>
 
                     <h2 className="card-title">{blog.title}</h2>
