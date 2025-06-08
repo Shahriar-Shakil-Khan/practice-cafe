@@ -12,8 +12,15 @@ function App() {
     setBookMarked([...bookMarked,blog])
  } 
 
- const handleMarkAsRead=(time)=>{
-     setReadingCount(readingCount+time)
+ const handleMarkAsRead=(time,id)=>{
+     setReadingCount(readingCount+time);
+     handleRemoveFromBookmarked(id);
+     
+ }
+
+ const handleRemoveFromBookmarked=(id)=>{
+     const remainingBookMark=bookMarked.filter((mark)=>mark.id!==id);
+     setBookMarked(remainingBookMark)
  }
   
 console.log()
@@ -30,9 +37,9 @@ console.log()
           <div className="right-container w-[30%]">
             <h1>Reading Time :{readingCount}</h1>
             <h1>Bookmarked Count : {bookMarked.length}</h1>
-              <div className=' rounded-2xl bg-amber-500 text-white'>
+              <div >
                 {
-                bookMarked.map((marked)=><p>{marked.title}</p>)
+                bookMarked.map((marked)=><p className=' rounded-2xl bg-amber-500 text-white m-4'>{marked.title}</p>)
                 }
               </div>
           </div>
